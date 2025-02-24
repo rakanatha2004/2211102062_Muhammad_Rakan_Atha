@@ -1,25 +1,31 @@
 void main() {
-  List<List<int>> array2D = [];
+  List<List<int>> array2D = List.generate(4, (index) => []);
 
-  // Baris 1: 4 bilangan kelipatan 6 berurutan mulai dari 6
-  List<int> row1 = List.generate(4, (i) => (i + 1) * 6);
-  array2D.add(row1);
+  int kelipatan6 = 6;
+  for (int i = 0; i < 4; i++) {
+    array2D[0].add(kelipatan6);
+    kelipatan6 += 6;
+  }
 
-  // Baris 2: 5 bilangan ganjil berurutan mulai dari 3
-  List<int> row2 = List.generate(5, (i) => 3 + (i * 2));
-  array2D.add(row2);
+  int bilanganGanjil = 3;
+  for (int i = 0; i < 5; i++) {
+    array2D[1].add(bilanganGanjil);
+    bilanganGanjil += 2;
+  }
 
-  // Baris 3: 6 bilangan pangkat tiga dari bilangan asli mulai dari 4
-  List<int> row3 = List.generate(6, (i) => (i + 4) * (i + 4) * (i + 4));
-  array2D.add(row3);
+  int bilanganAsli = 4;
+  for (int i = 0; i < 6; i++) {
+    array2D[2].add(bilanganAsli * bilanganAsli * bilanganAsli);
+    bilanganAsli++;
+  }
 
-  // Baris 4: 7 bilangan asli berurutan beda 7 mulai dari 3
-  List<int> row4 = List.generate(7, (i) => 3 + (i * 7));
-  array2D.add(row4);
+  int bilanganBeda7 = 3;
+  for (int i = 0; i < 7; i++) {
+    array2D[3].add(bilanganBeda7);
+    bilanganBeda7 += 7;
+  }
 
-  // Menampilkan hasil
-  print("Isi List:");
-  for (var row in array2D) {
-    print(row.join(" "));
+  for (int i = 0; i < 4; i++) {
+    print("Baris ${i + 1}: ${array2D[i]}");
   }
 }
