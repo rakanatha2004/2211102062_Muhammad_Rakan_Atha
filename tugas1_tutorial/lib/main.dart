@@ -1,10 +1,8 @@
 int hitungFPB(int a, int b) {
-  // Pastikan kedua bilangan positif
   if (a <= 0 || b <= 0) {
-    return -1; // Mengembalikan -1 jika input tidak valid
+    return -1; 
   }
 
-  // Algoritma Euclidean
   while (b != 0) {
     int temp = b;
     b = a % b;
@@ -14,8 +12,8 @@ int hitungFPB(int a, int b) {
 }
 
 void main() {
-  int bilangan1 = 12;
-  int bilangan2 = 8;
+  int bilangan1 = 16;
+  int bilangan2 = 4;
   int fpb = hitungFPB(bilangan1, bilangan2);
 
   if (fpb != -1) {
