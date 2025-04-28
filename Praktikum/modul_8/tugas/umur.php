@@ -29,5 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h2>Hasil:</h2>
         <p>Halo, <?php echo $nama; ?>. Anda termasuk: <strong><?php echo $status; ?></strong>.</p>
     <?php endif; ?>
+    <a href="dashboard.php">Kembali </a>
 </body>
 </html>
