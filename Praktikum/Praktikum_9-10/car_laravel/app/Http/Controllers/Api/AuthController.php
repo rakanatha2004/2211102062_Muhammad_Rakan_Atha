@@ -14,8 +14,8 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ]);
 
@@ -24,14 +24,16 @@ class AuthController extends Controller
         }
 
         $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password)
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
 
         $token = $user->createToken('authToken')->plainTextToken;
 
-        if($user) {
+
+
+        if ($user) {
             return response()->json([
                 'token_type' => 'Bearer',
                 'access_token' => $token,
@@ -60,9 +62,10 @@ class AuthController extends Controller
 
             // cek Credentials Login
             $user = User::where('email', $request->email)->first();
-            if (! $user) {
+            if (!$user) {
                 return response()->json(['message' => 'Email User Salah'], 400);
             }
+
 
             // jika hash tidak sesuai muncul alert
             if (!Hash::check($request->password, $user->password, [])) {
@@ -85,7 +88,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => $error->getMessage(),
-            ],  500);
+            ], 500);
         }
     }
 
